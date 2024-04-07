@@ -47,7 +47,14 @@ const Index = () => {
                 mr={2}
               />
               {todo.text}
-              <Button size="xs" ml={2}>
+              <Button
+                size="xs"
+                ml={2}
+                onClick={() => {
+                  const updatedTodos = todos.filter((t) => t.id !== todo.id);
+                  setTodos(updatedTodos);
+                }}
+              >
                 Delete
               </Button>
             </Flex>
