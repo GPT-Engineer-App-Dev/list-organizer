@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Heading, UnorderedList, ListItem, Checkbox, Button, Flex } from "@chakra-ui/react";
+import { Heading, UnorderedList, ListItem, Checkbox, Button, Flex, Input } from "@chakra-ui/react";
 
 const Index = () => {
   const [todos, setTodos] = useState([
@@ -7,6 +7,16 @@ const Index = () => {
     { id: 2, text: "Do laundry", completed: false },
     { id: 3, text: "Finish project", completed: false },
   ]);
+  const [newTodo, setNewTodo] = useState("");
+
+  const addTodo = () => {
+    if (newTodo.trim() !== "") {
+      const newId = todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
+      const todo = { id: newId, text: newTodo, completed: false };
+      setTodos([todo, ...todos]);
+      setNewTodo("");
+    }
+  };
 
   React.useEffect(() => {
     document.title = "My Todos";
@@ -15,6 +25,10 @@ const Index = () => {
   return (
     <>
       <Heading>My Todo List</Heading>
+      <Flex mt={4}>
+        <Input value={newTodo} onChange={(e) => setNewTodo(e.target.value)} placeholder="Enter a new todo" mr={2} />
+        <Button onClick={addTodo}>Add Todo</Button>
+      </Flex>
       <UnorderedList spacing={3} mt={4}>
         {todos.map((todo) => (
           <ListItem key={todo.id}>
