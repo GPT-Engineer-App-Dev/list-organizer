@@ -1,15 +1,21 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import React from "react";
+import { Heading, UnorderedList, ListItem } from "@chakra-ui/react";
 
 const Index = () => {
-  // TODO: Create the website here!
+  React.useEffect(() => {
+    document.title = "My Todos";
+  }, []);
+
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <>
+      <Heading>My Todo List</Heading>
+      <UnorderedList>
+        <ListItem>Buy groceries</ListItem>
+        <ListItem>Do laundry</ListItem>
+        <ListItem>Finish project</ListItem>
+      </UnorderedList>
+    </>
+  );
 };
 
 export default Index;
