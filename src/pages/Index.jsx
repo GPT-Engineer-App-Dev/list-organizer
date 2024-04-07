@@ -33,7 +33,19 @@ const Index = () => {
         {todos.map((todo) => (
           <ListItem key={todo.id}>
             <Flex align="center">
-              <Checkbox mr={2} />
+              <Checkbox
+                isChecked={todo.completed}
+                onChange={() => {
+                  const updatedTodos = todos.map((t) => {
+                    if (t.id === todo.id) {
+                      return { ...t, completed: !t.completed };
+                    }
+                    return t;
+                  });
+                  setTodos(updatedTodos);
+                }}
+                mr={2}
+              />
               {todo.text}
               <Button size="xs" ml={2}>
                 Delete
