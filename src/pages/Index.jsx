@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, UnorderedList, ListItem } from "@chakra-ui/react";
+import { Heading, UnorderedList, ListItem, Checkbox, Button, Flex } from "@chakra-ui/react";
 
 const Index = () => {
   React.useEffect(() => {
@@ -9,10 +9,34 @@ const Index = () => {
   return (
     <>
       <Heading>My Todo List</Heading>
-      <UnorderedList>
-        <ListItem>Buy groceries</ListItem>
-        <ListItem>Do laundry</ListItem>
-        <ListItem>Finish project</ListItem>
+      <UnorderedList spacing={3} mt={4}>
+        <ListItem>
+          <Flex align="center">
+            <Checkbox mr={2} />
+            Buy groceries
+            <Button size="xs" ml={2}>
+              Delete
+            </Button>
+          </Flex>
+        </ListItem>
+        <ListItem>
+          <Flex align="center">
+            <Checkbox mr={2} />
+            Do laundry
+            <Button size="xs" ml={2}>
+              Delete
+            </Button>
+          </Flex>
+        </ListItem>
+        <ListItem>
+          <Flex align="center">
+            <Checkbox mr={2} />
+            Finish project
+            <Button size="xs" ml={2}>
+              Delete
+            </Button>
+          </Flex>
+        </ListItem>
       </UnorderedList>
     </>
   );
